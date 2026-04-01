@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jyotismita Adhikary | Computational Physicist</title>
+    <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap)" rel="stylesheet">
+    <link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --accent: #3182ce;
+            --accent-light: #4299e1;
+            --text: #2d3748;
+            --text-light: #718096;
+            --bg: #ffffff;
+            --bg-alt: #f7fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0 2rem;
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 2rem 80px;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content .location {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-content .summary {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image .placeholder {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 8rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 2rem;
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-alt);
+        }
+
+        .section-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Experience Cards */
+        .experience-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .experience-header h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .experience-header .date {
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .experience-header .institution {
+            width: 100%;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-card ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .experience-card ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Competencies Grid */
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .competency-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .competency-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .competency-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .competency-card h4 i {
+            color: var(--accent);
+        }
+
+        .competency-card p {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-category h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-alt);
+            color: var(--text);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Projects Section */
+        .projects-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-card p {
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .project-card .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-card .project-link:hover {
+            color: var(--primary);
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .education-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .education-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .education-card h4 {
+            color: var(--primary);
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .institution {
+            color: var(--text);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .education-card .year {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .education-card .gpa {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Awards Section */
+        .awards-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .award-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: var(--transition);
+        }
+
+        .award-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .award-card i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-top: 0.25rem;
+        }
+
+        .award-card h4 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .award-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Talks & Conferences Section */
+        .talks-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .talk-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            transition: var(--transition);
+        }
+
+        .talk-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .talk-info h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .talk-info .venue {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .talk-info .date {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        .talk-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .talk-links a {
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .talk-links a:hover {
+            background: var(--primary);
+        }
+
+        /* Teaching Section */
+        .teaching-list {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .teaching-list ul {
+            list-style: none;
+        }
+
+        .teaching-list ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .teaching-list ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Languages Section */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .language-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .language-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .language-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .language-card p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-card .blog-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .blog-card .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-card .blog-date {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-card h4 {
+            color: var(--primary);
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card p {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .blog-card .read-more:hover {
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .contact-email:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        footer .footer-links a:hover {
+            color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-image .placeholder {
+                width: 250px;
+                height: 250px;
+                font-size: 5rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem 2rem;
+                gap: 0;
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                padding: 0.75rem 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 1.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, footer, .blog-card .blog-image {
+                display: none;
+            }
+
+            section {
+                padding: 20px 0;
+                page-break-inside: avoid;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 20px 0;
+            }
+
+            .experience-card, .competency-card, .skill-category, .project-card, .education-card, .award-card, .talk-card, .blog-card {
+                box-shadow: none;
+                border: 1px solid var(--border);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">JA</a>
+            <ul id="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#competencies">Competencies</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#talks">Talks</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Jyotismita Adhikary</h1>
+                <p class="subtitle">Computational Physicist | Data Scientist | Researcher</p>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Warsaw, Poland</p>
+                <p class="summary">
+                    Computational physicist with 4+ years of experience building large-scale Monte Carlo simulation pipelines, statistical inference frameworks, and data-driven models for rare-signal detection. Expert in Python and C++ with hands-on experience processing 10<sup>7</sup>+ simulated events, performing high-dimensional parameter scans, and optimizing numerical workflows under tight computational constraints. Strong background in quantitative modeling, likelihood-based inference, and machine learning tools. Seeking roles in quantitative research, data science, research engineering, or advanced analytics.
+                </p>
+                <div class="social-links">
+                    <a href="mailto:Jyotismita.Adhikary@ncbj.gov.pl"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="[linkedin.com](https://www.linkedin.com/in/jyotismita-adhikary-555a521b0)" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="[github.com](https://github.com/JyotismitaAdhikary)" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="[orcid.org](https://orcid.org/0000-0002-5389-4170)" target="_blank"><i class="fab fa-orcid"></i> ORCID</a>
+                    <a href="[inspirehep.net](https://inspirehep.net/authors/2120003)" target="_blank"><i class="fas fa-globe"></i> INSPIRE</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-container">
+            <h2 class="section-title">Professional Experience</h2>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <h3>Ph.D. Researcher</h3>
+                    <span class="date">2022 – Present</span>
+                    <span class="institution">National Centre for Nuclear Research (NCBJ), Poland</span>
+                </div>
+                <ul>
+                    <li>Developed Monte Carlo simulation pipelines for rare-event detection in high-energy physics.</li>
+                    <li>Designed likelihood-based statistical frameworks for parameter estimation under significant background noise.</li>
+                    <li>Performed multi-dimensional parameter scans and sensitivity analyses across large model spaces.</li>
+                    <li>Integrated MadGraph, Pythia8, and custom analysis tools into end-to-end workflows.</li>
+                    <li>Led a 3-person research initiative combining theory, simulation, and phenomenology.</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <h3>Visiting Researcher</h3>
+                    <span class="date">Aug – Oct 2024</span>
+                    <span class="institution">University of California, Irvine, USA</span>
+                </div>
+                <ul>
+                    <li>Built joint simulation-analysis pipeline for light dark matter studies.</li>
+                    <li>Performed combined statistical inference using independently developed models.</li>
+                    <li>Contributed to publication-level research within a CERN-affiliated collaboration.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Competencies Section -->
+    <section id="competencies">
+        <div class="section-container">
+            <h2 class="section-title">Core Competencies</h2>
+
+            <div class="competencies-grid">
+                <div class="competency-card">
+                    <h4><i class="fas fa-chart-line"></i> Statistical Modeling & Hypothesis Testing</h4>
+                    <p>Designed likelihood-based inference frameworks for dark matter parameter estimation and exclusion limits.</p>
+                </div>
+                <div class="competency-card">
+                    <h4><i class="fas fa-dice"></i> Monte Carlo Simulation & Numerical Optimization</h4>
+                    <p>Built large-scale simulation pipelines integrating MadGraph and Pythia8, optimizing workflows for 10<sup>7</sup>+ events.</p>
+                </div>
+                <div class="competency-card">
+                    <h4><i class="fas fa-signal"></i> Signal Detection in High-Noise Environments</h4>
+                    <p>Developed sensitivity projections for weakly interacting particles under extreme background conditions.</p>
+                </div>
+                <div class="competency-card">
+                    <h4><i class="fas fa-brain"></i> Machine Learning</h4>
+                    <p>Applied scikit-learn and PyTorch for exploratory modeling and classification in physics-inspired datasets.</p>
+                </div>
+                <div class="competency-card">
+                    <h4><i class="fas fa-database"></i> Large-Scale Data Analysis</h4>
+                    <p>Conducted multi-dimensional parameter scans and statistical fits across complex model spaces.</p>
+                </div>
+                <div class="competency-card">
+                    <h4><i class="fas fa-check-circle"></i> Scientific Computing & Model Validation</h4>
+                    <p>Validated simulation outputs against theoretical predictions and cross-checked multi-tool consistency.</p>
+                </div>
+                <div class="competency-card">
+                    <h4><i class="fas fa-users"></i> Collaboration & Leadership</h4>
+                    <p>Led a focused research project and contributed to international collaborations (CERN, multi-institution teams).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills">
+        <div class="section-container">
+            <h2 class="section-title">Technical Skills</h2>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4><i class="fas fa-code"></i> Programming</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">Mathematica</span>
+                        <span class="skill-tag">MATLAB/Scilab</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-robot"></i> Data & ML</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">scikit-learn</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">ROOT</span>
+                        <span class="skill-tag">MINUIT</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-atom"></i> Scientific/Simulation Tools</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MadGraph</span>
+                        <span class="skill-tag">Pythia8</span>
+                        <span class="skill-tag">FORESEE</span>
+                        <span class="skill-tag">LikeDM</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-tools"></i> Workflow</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">macOS</span>
+                        <span class="skill-tag">Windows</span>
+                        <span class="skill-tag">LaTeX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-container">
+            <h2 class="section-title">Selected Analytical Projects</h2>
+
+            <div class="projects-list">
+                <div class="project-card">
+                    <p>Built simulation framework evaluating detection sensitivity for weakly interacting particles at future CERN experiments.</p>
+                </div>
+                <div class="project-card">
+                    <p>Modeled signal generation and propagation across detector geometries using high-energy event generators.</p>
+                </div>
+                <div class="project-card">
+                    <p>Developed end-to-end pipeline combining simulation, statistical inference, and visualization for publication-level results.</p>
+                </div>
+                <div class="project-card">
+                    <p>Results published in high-impact journals.</p>
+                    <a href="[inspirehep.net](https://inspirehep.net/authors/2120003)" class="project-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> View INSPIRE Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-container">
+            <h2 class="section-title">Education</h2>
+
+            <div class="education-grid">
+                <div class="education-card">
+                    <h4>Ph.D. in Physics</h4>
+                    <p class="institution">National Centre for Nuclear Research (NCBJ), Poland</p>
+                    <p class="year">Expected September 2026</p>
+                </div>
+                <div class="education-card">
+                    <h4>M.Sc. in Physics</h4>
+                    <p class="institution">Indian Institute of Technology Jodhpur, India</p>
+                    <p class="year">2022</p>
+                    <p class="gpa">CGPA: 8.81/10</p>
+                </div>
+                <div class="education-card">
+                    <h4>B.Sc. in Physics (Honours)</h4>
+                    <p class="institution">University of Delhi, India</p>
+                    <p class="year">2020</p>
+                    <p class="gpa">CGPA: 9.419/10</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards">
+        <div class="section-container">
+            <h2 class="section-title">Awards & Honors</h2>
+
+            <div class="awards-list">
+                <div class="award-card">
+                    <i class="fas fa-award"></i>
+                    <div>
+                        <h4>NAWA Scholarship</h4>
+                        <p>Poland</p>
+                    </div>
+                </div>
+                <div class="award-card">
+                    <i class="fas fa-plane"></i>
+                    <div>
+                        <h4>NAWA International Research Travel Grant</h4>
+                        <p>Poland</p>
+                    </div>
+                </div>
+                <div class="award-card">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <h4>INSPIRE Scholarship for Higher Education</h4>
+                        <p>India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Talks & Conferences Section -->
+    <section id="talks">
+        <div class="section-container">
+            <h2 class="section-title">Talks & Conferences</h2>
+
+            <div class="talks-list">
+                <!-- Add your talks here. Below are placeholder examples -->
+                <div class="talk-card">
+                    <div class="talk-info">
+                        <h4>Talk Title 1</h4>
+                        <p class="venue">CERN, Geneva, Switzerland</p>
+                        <p class="date">Month Year</p>
+                    </div>
+                    <div class="talk-links">
+                        <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Slides</a>
+                        <a href="#" target="_blank"><i class="fas fa-video"></i> Video</a>
+                    </div>
+                </div>
+
+                <div class="talk-card">
+                    <div class="talk-info">
+                        <h4>Talk Title 2</h4>
+                        <p class="venue">University of Padova, Italy</p>
+                        <p class="date">Month Year</p>
+                    </div>
+                    <div class="talk-links">
+                        <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Slides</a>
+                    </div>
+                </div>
+
+                <div class="talk-card">
+                    <div class="talk-info">
+                        <h4>Talk Title 3</h4>
+                        <p class="venue">Warsaw, Poland</p>
+                        <p class="date">Month Year</p>
+                    </div>
+                    <div class="talk-links">
+                        <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Slides</a>
+                    </div>
+                </div>
+
+                <div class="talk-card">
+                    <div class="talk-info">
+                        <h4>Online Seminar / Workshop</h4>
+                        <p class="venue">Virtual</p>
+                        <p class="date">Month Year</p>
+                    </div>
+                    <div class="talk-links">
+                        <a href="#" target="_blank"><i class="fas fa-video"></i> Recording</a>
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-light);">
+                <em>Update this section with your actual talks and conference presentations.</em>
+            </p>
+        </div>
+    </section>
+
+    <!-- Teaching Section -->
+    <section id="teaching">
+        <div class="section-container">
+            <h2 class="section-title">Teaching & Communication</h2>
+
+            <div class="teaching-list">
+                <ul>
+                    <li>Teaching Assistant for graduate-level Classical Mechanics.</li>
+                    <li>Delivered presentations at international conferences and workshops (CERN, Padova, Warsaw, online).</li>
+                    <li>Experienced in communicating complex quantitative results to specialist and cross-disciplinary audiences.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages">
+        <div class="section-container">
+            <h2 class="section-title">Languages</h2>
+
+            <div class="languages-grid">
+                <div class="language-card">
+                    <h4>Assamese</h4>
+                    <p>Native or bilingual proficiency</p>
+                </div>
+                <div class="language-card">
+                    <h4>English</h4>
+                    <p>Professional working proficiency</p>
+                </div>
+                <div class="language-card">
+                    <h4>Hindi</h4>
+                    <p>Professional working proficiency</p>
+                </div>
+                <div class="language-card">
+                    <h4>Finnish</h4>
+                    <p>Elementary proficiency</p>
+                </div>
+                <div class="language-card">
+                    <h4>German</h4>
+                    <p>Elementary proficiency</p>
+                </div>
+                <div class="language-card">
+                    <h4>Polish</h4>
+                    <p>Elementary proficiency</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+        <div class="section-container">
+            <h2 class="section-title">Blog & Updates</h2>
+
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="blog-content">
+                        <p class="blog-date">January 2025</p>
+                        <h4>Project Update: Neutrino Portal at Muon Collider</h4>
+                        <p>Latest developments in our neutrinophilic mediator studies at future muon collider experiments...</p>
+                        <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="blog-content">
+                        <p class="blog-date">December 2024</p>
+                        <h4>Research Visit at UC Irvine</h4>
+                        <p>Reflections on my collaborative research visit working on light dark matter scenarios...</p>
+                        <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="blog-content">
+                        <p class="blog-date">November 2024</p>
+                        <h4>Tips for Building Reproducible Simulation Pipelines</h4>
+                        <p>Lessons learned from developing large-scale Monte Carlo workflows in particle physics...</p>
+                        <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-light);">
+                <em>This is a placeholder blog section. Replace with your actual posts or link to an external blog.</em>
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-container">
+            <h2 class="section-title">Get in Touch</h2>
+
+            <div class="contact-content">
+                <p>I'm always open to discussing research collaborations, data science opportunities, or interesting projects. Feel free to reach out!</p>
+                <a href="mailto:Jyotismita.Adhikary@ncbj.gov.pl" class="contact-email">
+                    <i class="fas fa-envelope"></i> Jyotismita.Adhikary@ncbj.gov.pl
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="mailto:Jyotismita.Adhikary@ncbj.gov.pl" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="[linkedin.com](https://www.linkedin.com/in/jyotismita-adhikary-555a521b0)" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="[github.com](https://github.com/JyotismitaAdhikary)" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="[orcid.org](https://orcid.org/0000-0002-5389-4170)" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="[inspirehep.net](https://inspirehep.net/authors/2120003)" target="_blank" title="INSPIRE"><i class="fas fa-globe"></i></a>
+        </div>
+        <p>&copy; 2025 Jyotismita Adhikary. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        // Close menu when clicking on a link (mobile)
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
+
